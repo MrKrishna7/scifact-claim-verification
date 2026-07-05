@@ -1,4 +1,5 @@
 import os
+import shutil
 import urllib.request
 import tarfile
 
@@ -26,6 +27,8 @@ def download_scifact():
                 os.rename(nested, target)
 
         os.remove(tar_path)
+        os.remove(os.path.join(DATA_DIR, "._data"))
+        shutil.rmtree(os.path.join(DATA_DIR, "data"))
         print(f"SciFact downloaded to {DATA_DIR}")
     else:
         print("SciFact already downloaded.")
