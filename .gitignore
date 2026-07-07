@@ -26,6 +26,8 @@ data/claims_train.jsonl
 data/claims_dev.jsonl
 data/claims_test.jsonl
 data/scifact.tar.gz
+data/faiss_index.pkl
+data/bm25_index.pkl
 
 .DS_Store
 Thumbs.db
