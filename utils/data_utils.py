@@ -5,8 +5,8 @@ from typing import Any, Dict, List, Tuple
 from collections import Counter
 
 LABEL2ID = {
-    "SUPPORT": 0,
-    "CONTRADICT": 1,
+    "CONTRADICT": 0,
+    "SUPPORT": 1,
     "NOT_ENOUGH_INFO": 2,
 }
 ID2LABEL = {v: k for k, v in LABEL2ID.items()}
