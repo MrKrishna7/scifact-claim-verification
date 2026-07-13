@@ -12,6 +12,7 @@ from transformers import (
     EarlyStoppingCallback,
     Trainer,
 )
+from negation.augment_hook import augment_nli_pairs
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from utils.data_utils import (
@@ -170,6 +171,14 @@ def train(max_length: int, epochs: int, batch_size: int, lr: float) -> Dict:
 
     print("Building NLI pairs...")
     train_pairs = build_nli_pairs(train_claims, corpus, use_gold_sentences=True)
+    train_pairs = augment_nli_pairs(
+    train_pairs,
+    ratio=1.0,
+    use_insert_negation=True,
+    shuffle=True,
+    seed=42,
+    label_map=LABEL2ID
+)
     dev_pairs = build_nli_pairs(dev_claims, corpus, use_gold_sentences=True)
 
     print(f"\nTrain pairs : {len(train_pairs)}")
